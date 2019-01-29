@@ -200,8 +200,9 @@
 		<li class="uiBlock"><input type="checkbox" id="item-0" /><label for="item-0">Display Settings</label>
 			<ul>
 
-						<li><button onclick="reSize()">Resize Canvas</button></li>
-			</ul>
+				<li><button onclick="reSize()">Resize Canvas</button></li>
+                <li><button onclick="hideUI()">Hide UI</button></li>
+			</ul
 		</li>
 		<li class="uiBlock"><input type="checkbox" id="item-1" /><label for="item-1">Automaton Parameters</label>
 			<ul>
@@ -259,6 +260,12 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 /*<script type='text/javascript' src='E:\numjs_local\dist\numjs.js'>
 
 <script src="math.min.js" type="text/javascript">*/
+
+function hideUI(){
+
+    document.getElementsByClassName('css-treeview')[0].style.display = "none"
+
+} 
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
