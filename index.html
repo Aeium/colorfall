@@ -16,13 +16,14 @@
     list-style-position:inside;
     border: 2px solid gray;
     margin:5px;
-
+    background: rgba(60, 60, 60, .8);
 }
 
 .css-treeview input
 {
 	position: absolute;
 	opacity: 1;
+    
 }
 
 .css-treeview
@@ -33,7 +34,7 @@
 	user-select: none;
     
       color: white;
-      background: rgba(90, 90, 90, 0.5);
+      background: rgba(90, 90, 90, 0.7);
       padding: 0.5em;
       position: fixed;
       top: 10px;
@@ -75,12 +76,13 @@
 .css-treeview input:disabled + label
 {
 	cursor: default;
-	opacity: .75;
+	opacity: 1;
 }
 
 .css-treeview input:checked:not(:disabled) + label + ul
 {
 	display: block;
+    background: rgba(60, 60, 60, 1);
 }
 
 .css-treeview label,
@@ -147,7 +149,7 @@
 }
 
 .Control {
-  background: rgba(128, 128, 128, 0.5);
+  background: rgba(128, 128, 128, 0.7);
   padding: 0.5em;
   position: fixed;
   top: 10px;
@@ -156,7 +158,7 @@
   visibility: hidden;
 }
 .filterSmall {
-  background: rgba(128, 128, 128, 0.5);
+  background: rgba(128, 128, 128, 0.7);
   padding: 0.5em;
   position: fixed;
   top: 10px;
@@ -181,7 +183,7 @@
 
                 <p>As more and more numbers begin to overflow, some resonate inside the limiting interval, forming cycles. These cycles spread and form stable groups that are congruent with the visualization filter, each one becoming a distinct bands of color that streaks down like flowing paint.</p>
 
-                <p>Despite their resilence to the tumultuous motion of the automata, these groups can be extremely sensitive to very small errors in adding and copying their state. Introducing a small error by subtracting 1 from the value of a new cell can often disrupt the entire color-group. The stable band of color is replaced by a splash of many colors that must randomly explore and spread for a time until it either terminates or settles down again in one or more new groups.</p>
+                <p>Despite their resilence to the tumultuous motion of the automaton, these groups can be extremely sensitive to very small errors in adding and copying their state. Introducing a small error by subtracting 1 from the value of a new cell can often disrupt the entire color-group. The stable band of color is replaced by a splash of many colors that must randomly spread for a time until it either terminates or settles down again in one or more new groups.</p>
                 
                 <p>The error rate and other parameters can be adjusted is the automaton parameters tab.</p>
                 
@@ -203,8 +205,6 @@
 		</li>
 		<li class="uiBlock"><input type="checkbox" id="item-1" /><label for="item-1">Automaton Parameters</label>
 			<ul>
-
-						<li><li><input onclick="patternView()" type="checkbox" id="item-1-1" /><label for="item-1-1">Conv Filter Editor</label></li></li>
 						<li> <p>Even-zero-mods: (comma seperate for multiple mods)<input type="text" id="Stride" value="2" style="position:relative; background: rgba(230,230,230,.5); z-index: 5; border:2px white; visibility: visible; 
   color: white; color:black;" onkeyup="setMods(this.value)"></p></li>
   						<li> <p>Error Chance (1/x): <input type="text" id="Stride" value="1000" style="position:relative; background: rgba(230,230,230,.5); z-index: 5; border:2px white; visibility: visible; 
