@@ -168,6 +168,10 @@
 }
 </style>
 
+<div id="noBigInt" style="display:none">
+<p> This page requires javascript BigInt support. More here: <a href="https://developers.google.com/web/updates/2018/05/bigint">https://developers.google.com/web/updates/2018/05/bigint</a></p>
+</div>
+
 <div class="css-treeview">
     <div class="uiBlock" style="">
 
@@ -216,6 +220,8 @@
 		</li>
 	</ul>
 </div>
+
+<img src="https://raw.githubusercontent.com/Aeium/colorfall/master/colorfall.jpg" style="display:none"> 
 
 
 <div id="container">
@@ -337,7 +343,20 @@ var cellY = heightCanvas / heightPixels
     
 //console.log(getParameterByName('hC'))
 
-if(reload){
+var bigIntSupported = false
+
+if(typeof BigInt == 'function'){  // check if bigint supported
+    bigIntSupported = true
+
+} else{
+
+    document.getElementById('noBigInt').style = 'block'
+    document.getElementById('myCanvas').style = 'none'
+
+}
+
+
+if(reload && bigIntSupported){
 
     window.location.search += '&cH='+heightCanvas.toString()+'&cW='+widthCanvas.toString()+'&pH='+heightPixels.toString()+'&pW='+widthPixels.toString()
 
