@@ -217,6 +217,7 @@
 			<ul>
 
 				<li><button onclick="reSize()">Resize Canvas</button></li>
+				<li><button onclick="reverseMotion()">Reverse Motion</button></li>
                 <li><button onclick="hideUI()">Hide UI</button></li>
 			</ul
 		</li>
@@ -803,10 +804,16 @@ function resetAuto(){
 
 function displayAuto(){
 
-
+    var displayRow2 = displayRow
+    
+    if( !writeDown ){
+    
+        displayRow2 = heightPixels - displayRow
+    
+    }
 
     
-    if(displayRow >= heightPixels){
+    if(displayRow >= heightPixels && writeDown){
     
         ////console.log("yes, " + display.length + " is bigger than " + heightPixels)
     
@@ -817,12 +824,24 @@ function displayAuto(){
         
         ctx.drawImage(canvas, 0, cellY, ctx.canvas.width, ctx.canvas.height - cellY,0,0,ctx.canvas.width, ctx.canvas.height - cellY)
     }
+    if(displayRow >= heightPixels && (!writeDown)){
+    
+        ////console.log("yes, " + display.length + " is bigger than " + heightPixels)
+    
+        //display = display.slice(display.length-heightPixels, display.length)
+        displayRow -= 1
+        
+        //context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+        
+        ctx.drawImage(canvas, 0, -cellY, ctx.canvas.width, ctx.canvas.height - cellY,0,0,ctx.canvas.width, ctx.canvas.height - cellY)
+    }
+    
     
         ////console.log(display.length)
     
     for(var j = 0; j < valuesA.length; j++){
     
-        setPix1(j,displayRow,valuesA[j])
+        setPix1(j,displayRow2,valuesA[j])
     }
     
     displayRow += 1
@@ -867,6 +886,12 @@ function togPixEdit(){
 
     pixEditMode = !pixEditMode
 
+}
+
+var writeDown = true
+
+function reverseMotion(){
+    writeDown = !writeDown
 }
 
 //frame1.print()
