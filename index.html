@@ -801,16 +801,10 @@ function resetAuto(){
 
 }
 
+var displayRow2 = null
 
 function displayAuto(){
 
-    var displayRow2 = displayRow
-    
-    if( !writeDown ){
-    
-        displayRow2 = heightPixels - displayRow
-    
-    }
 
     
     if(displayRow >= heightPixels && writeDown){
@@ -829,22 +823,38 @@ function displayAuto(){
         ////console.log("yes, " + display.length + " is bigger than " + heightPixels)
     
         //display = display.slice(display.length-heightPixels, display.length)
-        displayRow -= 1
         
         //context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
         
-        ctx.drawImage(canvas, 0, -cellY, ctx.canvas.width, ctx.canvas.height - cellY,0,0,ctx.canvas.width, ctx.canvas.height - cellY)
+        displayRow -= 1
+        
+        ctx.drawImage(canvas, 0, 0, ctx.canvas.width, ctx.canvas.height - cellY, 0,cellY, ctx.canvas.width, ctx.canvas.height- cellY)
     }
-    
-    
+
         ////console.log(display.length)
+    if( writeDown){
+
+        displayRow2 = displayRow
+    }
+    else{
     
+        displayRow2 = heightPixels - displayRow - 1
+    
+    }
+        
     for(var j = 0; j < valuesA.length; j++){
     
         setPix1(j,displayRow2,valuesA[j])
     }
     
     displayRow += 1
+    
+    //if(displayRow == heightPixels){
+    //    displayRow -= 1
+    
+    //}
+    
+    console.log(displayRow)
     
 }
 
@@ -888,7 +898,7 @@ function togPixEdit(){
 
 }
 
-var writeDown = false
+var writeDown = true
 
 function reverseMotion(){
     writeDown = !writeDown
